@@ -2,10 +2,47 @@ const express = require('express');
 const router = express.Router();
 const actionDb = require('../data/helpers/actionModel.js');
 
-
 // CRUD
 
+router.get('/', (req, res) => {
 
+  actionDb.get()
+    .then(actions => {
+      res.status(200).json({ actions });
+    })
+    .catch( err => {
+      res.status(500).json({ error: "Action information could not be retrieved."})
+    })
+});
+
+router.get('/:id', validateActionId, (req, res) => {
+  res.status(200).json(req.action);
+});
+
+router.put('/:id', validateActionId, validateAction, (req, res) => {
+  const updatedAction = req.body;
+  const { id } = req.params;
+
+  actionDb.update(id, updatedAction)
+    .then( action => {
+      res.status(204).json({action});
+    })
+    .catch( err => {
+      res.status(500).json({ message: 'Error updating action.' });
+    })
+});
+
+router.delete('/:id', validateActionId, (req, res) => {
+  const { id } = req.params;
+
+  actionDb.remove(id)
+    .then( action => {
+      res.status(204).json({ action })
+    })
+    .catch( err => {
+      res.status(500).json({ message: 'error' });
+    })
+});
 
 //middleware
 function validateActionId(req, res, next) {
