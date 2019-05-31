@@ -40,7 +40,6 @@ class Project extends React.Component {
         <h5>Actions</h5>
           {this.state.actions.map(action => {
             return (
-            
                 <p>{action.description}</p>
             )
           })}
