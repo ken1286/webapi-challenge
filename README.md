@@ -26,13 +26,23 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+I learned that Express is a minimalist framework and uses middleware to handle certain aspects of an application.
+
 - [ ] Describe Middleware?
+
+Middleware is a function that can be reused and is used to change an aspect of an application.
 
 - [ ] Describe a Resource?
 
+Everything is a Resource and can be accessed by a unique URL.
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+200
+
 - [ ] How can we partition our application into sub-applications?
+
+With routing.
 
 ## Project Setup
 
